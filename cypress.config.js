@@ -1,8 +1,15 @@
-const { defineConfig } = require("cypress");
+let saveEl = document.getElementById("save-el")
+let countEl = document.getElementById("count-el")
+let count = 0
 
-module.exports = defineConfig({
-  e2e: {
-    baseUrl: 'http://localhost:8888/',
-    supportFile: false,
-  },
-});
+function increment() {
+    count += 1
+    countEl.textContent = count
+}
+
+function save() {
+    let countStr = count + " - "
+    saveEl.textContent += countStr
+    countEl.textContent = 0
+    count = 0
+}
